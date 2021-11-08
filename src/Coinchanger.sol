@@ -6,7 +6,7 @@ struct Change {
 }
 
 contract Coinchanger {
-    function makeChange(uint256) public pure returns (Change memory) {
-        return Change(0);
+    function makeChange(uint256 _coins) public pure returns (Change memory) {
+        return Change(_coins);
     }
 }
