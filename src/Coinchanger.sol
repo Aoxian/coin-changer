@@ -5,13 +5,18 @@ struct Change {
     uint256 pennies;
     uint256 nickles;
     uint256 dimes;
+    uint256 quarters;
 }
 
 contract Coinchanger {
     function makeChange(uint256 _coins) public pure returns (Change memory) {
-        Change memory change = Change(0, 0, 0);
+        Change memory change = Change(0, 0, 0, 0);
         uint256 coins = _coins;
 
+        while (coins >= 25) {
+            coins = coins - 25;
+            change.quarters = change.quarters + 1;
+        }
         while (coins >= 10) {
             coins = coins - 10;
             change.dimes = change.dimes + 1;
